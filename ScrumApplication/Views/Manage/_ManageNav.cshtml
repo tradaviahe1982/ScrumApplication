@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ScrumApplicationData.Models
+@using ScrumApplication.Views.Manage
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="nav flex-column nav-pills">
+    <a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" asp-action="Index">Thông tin của bạn</a>
+    <a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" asp-action="ChangePassword">Thay đổi mật khẩu</a>
+</div>
+

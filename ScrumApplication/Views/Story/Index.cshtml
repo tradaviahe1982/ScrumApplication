@@ -1,0 +1,61 @@
+﻿@*@model ScrumApplication.Models.StoryViewModels.StoryIndexViewModel*@
+@model ReflectionIT.Mvc.Paging.PagingList<ScrumApplication.Models.StoryViewModels.StoryDetailViewModel>
+@addTagHelper *, ReflectionIT.Mvc.Paging
+@{
+    ViewData["Title"] = "Danh Sách User Story";
+}
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <section>
+                        <form method="get" class="form-inline">
+                            <input name="filter" class="form-control" placeholder="Bạn tìm Stories theo tên" value="@Model.RouteValue["Filter"]" /> &nbsp
+                            <button type="submit" class="btn btn-info">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Tìm kiếm
+                            </button>
+                        </form>
+                        <hr />
+                        <nav aria-label="Phân trang">
+                            <partial name="PagerBootstrap4" model="@this.Model" />
+                        </nav>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tên User Story</th>
+                                    <th>Người báo cáo</th>
+                                    <th>Mô tả</th>
+                                    <th>Đánh giá điểm</th>
+                                    <th class="text-center" style="width: 220px;">Chức Năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var story in Model)
+                                {
+                                    <tr>
+                                        <td>@story.Name</td>
+                                        <td>@story.Reporter</td>
+                                        <td>@story.Description</td>
+                                        <td>@story.Point</td>
+                                        <td class="text-center">
+                                            <a asp-controller="Story" asp-action="Edit" asp-route-id="@story.Id" class="btn btn-warning">Sửa</a>
+                                            <a asp-controller="Task" asp-action="Index" asp-route-id="@story.Id" class="btn btn-info">
+                                                Scrumboard
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <a asp-controller="Story" asp-action="Create" class="btn btn-success">Thêm Mới User Story</a>
+                    </section>
+                </div>
+            </div>
+        </div>
+</div>
+    </div>

@@ -1,0 +1,20 @@
+F:\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.deps.json
+F:\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.runtimeconfig.json
+F:\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.runtimeconfig.dev.json
+F:\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.dll
+F:\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.pdb
+F:\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.csproj.CoreCompileInputs.cache
+F:\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.AssemblyInfoInputs.cache
+F:\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.AssemblyInfo.cs
+F:\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.dll
+F:\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.pdb
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.deps.json
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.runtimeconfig.json
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.runtimeconfig.dev.json
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.dll
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\bin\Debug\netcoreapp2.1\ScrumApplicationData.pdb
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.csproj.CoreCompileInputs.cache
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.AssemblyInfoInputs.cache
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.AssemblyInfo.cs
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.dll
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplicationData\obj\Debug\netcoreapp2.1\ScrumApplicationData.pdb

@@ -1,0 +1,57 @@
+﻿@using ScrumApplication.Models.AccountViewModels
+@model ScrumApplication.Models.ScrumViewModels.BoardAddTaskViewModel
+@{
+    ViewData["Title"] = "Thêm nhiệm vụ mới";
+}
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <section>
+                <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                    <h4>Tạo nhiệm vụ mới</h4>
+                    <hr />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <input asp-for="StoryId" type="hidden" />
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label>Trạng thái nhiệm vụ</label>
+                                @Html.DropDownListFor(model => model.TaskStatusId, new SelectList(ViewData["TaskStatuses"] as IEnumerable<ScrumApplicationData.Models.TaskStatus>, "Id", "Name"), "Bạn chọn trạng thái nhiệm vụ", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name"> Tên nhiệm vụ </label>
+                        <textarea asp-for="Name" class="form-control"></textarea>
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description"> Mô tả nhiệm vụ</label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Day">Ước lượng ngày làm</label>
+                        <input asp-for="Day" class="form-control" />
+                        <span asp-validation-for="Day" class="text-danger"></span>
+                    </div>
+                
+                    <div class="form-group">
+                        <select id="userId" name="userId" class="form-control">
+                            @foreach (var user in Model.Users)
+                            {
+                                <option value="@user.UserId">@user.UserRoleName - @user.FirstName @user.LastName</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <button type="submit" class="btn btn-info">Tạo nhiệm vụ mới</button>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

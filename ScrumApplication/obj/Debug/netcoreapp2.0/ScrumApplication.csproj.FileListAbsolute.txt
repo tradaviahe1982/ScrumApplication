@@ -1,0 +1,11 @@
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\bin\Debug\netcoreapp2.0\ScrumApplication.deps.json
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\bin\Debug\netcoreapp2.0\ScrumApplication.runtimeconfig.json
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\bin\Debug\netcoreapp2.0\ScrumApplication.runtimeconfig.dev.json
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\bin\Debug\netcoreapp2.0\ScrumApplication.dll
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\bin\Debug\netcoreapp2.0\ScrumApplication.pdb
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\obj\Debug\netcoreapp2.0\ScrumApplication.csprojAssemblyReference.cache
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\obj\Debug\netcoreapp2.0\ScrumApplication.csproj.CoreCompileInputs.cache
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\obj\Debug\netcoreapp2.0\ScrumApplication.AssemblyInfoInputs.cache
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\obj\Debug\netcoreapp2.0\ScrumApplication.AssemblyInfo.cs
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\obj\Debug\netcoreapp2.0\ScrumApplication.dll
+C:\Users\VIET ANH\Desktop\ScrumApplication\ScrumApplication\obj\Debug\netcoreapp2.0\ScrumApplication.pdb

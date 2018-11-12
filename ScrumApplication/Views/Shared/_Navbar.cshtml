@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ScrumApplicationData.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Quản trị mô hình Scrum</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Project" asp-action="Index">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Sprint" asp-action="Index">Sprints</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Story" asp-action="Index">Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="User" asp-action="Index">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Role" asp-action="Index">Roles</a>
+                    </li>
+
+                    @*<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Tasks</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-controller="User" asp-action="Index">Danh sách công việc</a>
+                        <a class="dropdown-item" asp-controller="User" asp-action="Index">Thông tin bảng điểm</a>
+                        <a class="dropdown-item" asp-controller="User" asp-action="Index">Báo cáo tiến độ</a>
+                        <a class="dropdown-item" asp-controller="User" asp-action="Index">Thông tin khác</a>
+                    </div>
+                </li>*@
+
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Project" asp-action="Index">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Sprint" asp-action="Index">Sprints</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Story" asp-action="Index">Stories</a>
+                    </li>
+                    @*<li class="nav-item">
+                        <a class="nav-link" asp-controller="User" asp-action="Index">Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Role" asp-action="Index">Roles</a>
+                    </li>*@
+                }
+            }
+        </ul>
+        @await Html.PartialAsync("_LoginPartial")
+    </div>
+</nav>

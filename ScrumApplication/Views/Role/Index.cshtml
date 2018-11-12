@@ -1,0 +1,52 @@
+﻿@*@model ScrumApplication.Models.RoleViewModels.ApplicationRoleIndexViewModel*@
+@model ReflectionIT.Mvc.Paging.PagingList<ScrumApplication.Models.RoleViewModels.ApplicationRoleDetailViewModel>
+@addTagHelper *, ReflectionIT.Mvc.Paging
+@{
+    ViewData["Title"] = "Danh sách quyền";
+}
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <section>
+                        <form method="get" class="form-inline">
+                            <input name="filter" class="form-control" placeholder="Bạn tìm tên quyền theo tên" value="@Model.RouteValue["Filter"]" /> &nbsp
+                            <button type="submit" class="btn btn-info">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Tìm kiếm
+                            </button>
+                        </form>
+                        <hr />
+                        <nav aria-label="Phân trang">
+                            <partial name="PagerBootstrap4" model="@this.Model" />
+                        </nav>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Tên quyền </th>
+                                    <th>Mô tả</th>
+                                    <th class="text-center" style="width: 160px;">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var role in Model)
+                                {
+                                    <tr>
+                                        <td>@role.RoleName</td>
+                                        <td>@role.Description</td>
+                                        <td class="text-center">
+                                            <a asp-controller="Role" asp-action="Edit" asp-route-id="@role.Id" class="btn btn-warning">Sửa</a>
+                                            <a asp-controller="Role" asp-action="Delete" asp-route-id="@role.Id" class="btn btn-danger">Xóa</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <a asp-controller="Role" asp-action="Create" class="btn btn-success">Tạo mới quyền</a>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

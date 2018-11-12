@@ -1,0 +1,73 @@
+﻿@using ScrumApplicationData.Models;
+@model ScrumApplication.Models.StoryViewModels.StoryDetailViewModel
+@{
+    ViewData["Title"] = "Tạo mới User Story";
+}
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <section>
+                        <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                            <hr />
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Danh sách Sprint</label>
+                                        @Html.DropDownListFor(model => model.SprintId, new SelectList(ViewData["Sprints"] as IEnumerable<Sprint>, "Id", "Number"), "Bạn chọn Sprint", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Trạng thái Story</label>
+                                        @Html.DropDownListFor(model => model.StoryStatusId, new SelectList(ViewData["StoryStatuses"] as IEnumerable<StoryStatus>, "Id", "Name"), "Bạn chọn trạng thái Story", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Loại kiểu Story</label>
+                                        @Html.DropDownListFor(model => model.StoryTypeId, new SelectList(ViewData["StoryType"] as IEnumerable<StoryType>, "Id", "Name"), "Bạn chọn kiểu Story", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+                            <div class="form-group">
+                                <label asp-for="Name">Tên User Story</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Reporter">Tên người báo cáo</label>
+                                <input asp-for="Reporter" class="form-control" />
+                                <span asp-validation-for="Reporter" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description">Mô tả</label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Point">Điểm đánh giá</label>
+                                <input asp-for="Point" class="form-control" />
+                                <span asp-validation-for="Point" class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Tạo mới User Story</button>
+                            <a asp-controller="Story" asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

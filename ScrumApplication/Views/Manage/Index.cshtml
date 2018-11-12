@@ -1,0 +1,67 @@
+﻿@using ScrumApplication.Helpers
+@using ScrumApplication.Models.ManageViewModels
+@model ScrumApplication.Models.ManageViewModels.IndexViewModel
+@{
+    ViewData["Title"] = "Thông tin tài khoản của bạn";
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+
+        <h4  style="padding-left:20px">@ViewData["Title"]</h4>
+        @Html.Partial("_StatusMessage", Model.StatusMessage)
+        <div class="row">
+            <div class="col-md-8">
+
+                <form method="post" style="padding-left:20px">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    @*<div class="form-group">
+                        <div class="checkbox">
+                            <label asp-for="IsAdmin">
+                                <input asp-for="IsAdmin" />
+                                @Html.DisplayNameFor(m => m.IsAdmin)
+                            </label>
+                        </div>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="FirstName">Họ của bạn</label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName">Tên của bạn</label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Username">Tên tài khoản</label>
+                        <input asp-for="Username" class="form-control" disabled />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email">Thư điện tử</label>
+                        @if (Model.IsEmailConfirmed)
+                        {
+                            <div class="input-group">
+                                <input asp-for="Email" class="form-control" />
+                                <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                            </div>
+                        }
+                        else
+                        {
+                            <input asp-for="Email" class="form-control" />
+                            <button asp-action="SendVerificationEmail" class="btn btn-link">Gửi thư để xác nhận</button>
+                        }
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber"> Số điện thoại</label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+                </form>
+
+            </div>
+        </div>
+
+        @section Scripts {
+            @await Html.PartialAsync("_ValidationScriptsPartial")
+        }

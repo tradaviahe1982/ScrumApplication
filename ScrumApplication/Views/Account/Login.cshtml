@@ -1,0 +1,80 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@using Microsoft.AspNetCore.Identity
+@using ScrumApplicationData.Models
+@using ScrumApplication.Models.AccountViewModels
+@model ScrumApplication.Models.AccountViewModels.LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Đăng nhập tài khoản";
+}
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+            <section>
+                <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                    <h4>Sử dụng tài khoản bạn đã đăng ký để đăng nhập</h4>
+                    <hr />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Email"> Thư điện tử của bạn</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"> Mật khẩu của bạn</label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label asp-for="RememberMe">
+                                <input asp-for="RememberMe" />
+                                @Html.DisplayNameFor(m => m.RememberMe)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Đăng nhập tài khoản</button>
+                    </div>
+                    <div class="form-group">
+                        <p>
+                            <a asp-action="ForgotPassword">Bạn có quên mật khẩu?</a>
+                        </p>
+                        <p>
+                            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Đăng ký tài khoản mới?</a>
+                        </p>
+                    </div>
+                </form>
+            </section>
+            </div>
+                </div>
+        </div>
+        <div class="col-md-7 col-md-offset-2">
+            <div class="card">
+                <div class="card-body">
+            <section>
+                <h4>Mô hình phát triển phần mềm nhanh Scrum.</h4>
+                <hr />
+                <div>
+                    <p>
+                        Ứng dụng có thể cung cấp cho bạn những công cụ tuyệt vời để quản trị dự án phần mềm với mô hình Scrum.
+                        Xem <a href="http://vnptit.vn/">công văn thực hiện </a> áp dụng mô hình Scrum cho các dự án phần mềm của công ty tại đây.
+                    </p>
+                </div>
+            </section>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,30 @@
+﻿@model ScrumApplicationData.Models.Tasks
+<div class="card mb-2  bg-light">
+    <div class="card-header">
+        <img src="@Model.ApplicationUser?.ImageUrl" alt="User Image" class="img-circle user-image" />
+        <strong>
+            @Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName
+        </strong>
+    </div>
+    <div class="card-body  ">
+        <p class="card-text">
+            @Model.Name
+        </p>
+        <p class="card-text">
+            Ước lượng hoàn thành: @Model.Day ngày
+        </p>
+        <footer class="blockquote-footer text-white">
+            <cite title="Source Title">@Model.Description</cite>
+        </footer>
+
+    </div>
+    <div class="card-footer text-right">
+        
+        <a asp-action="StartTask" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">
+            <i class="fas fa-play"></i> Bắt đầu
+        </a>
+        <a asp-action="RemoveTask" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">
+            <i class="fas fa-trash"></i> Gỡ bỏ
+        </a>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+﻿@using ScrumApplicationData.Models;
+@model ScrumApplication.Models.ProjectViewModels.ProjectDetailViewModel
+@{
+    ViewData["Title"] = "Sửa thông tin dự án";
+}
+@section Styles {
+}
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <section>
+                        @Html.Partial("_StatusMessage", Model.StatusMessage)
+                        <form method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <input asp-for="Id" type="hidden" />
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Trạng thái dự án</label>
+                                        @Html.DropDownListFor(model => model.ProjectStatusID, new SelectList(ViewData["ProjectStatuses"] as IEnumerable<ProjectStatus>, "Id", "Name"), "Bạn chọn trạng thái dự án", new { @class = "form-control" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Name">Tên dự án</label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description">Mô tả dự án</label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="StartDate">Ngày Bắt Đầu</label>
+                                <input asp-for="StartDate" type="date" class="form-control" />
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="EndDate">Ngày Dự Kiến Kết Thúc</label>
+                                <input asp-for="EndDate" type="date" class="form-control" />
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-warning">Cập nhật dự án</button>
+                            <a asp-controller="Project" asp-action="Index" class="btn btn-outline-primary">Quay lại danh sách</a>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <section>
+                        <h4>Thành viên tham gia dự án</h4>
+                        <hr />
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Ảnh cá nhân</th>
+                                    <th>Họ</th>
+                                    <th>Tên</th>
+                                    <th>Quyền</th>
+                                    <th> Chức Năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var user in Model.ProjectUsers)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@user.ImageUrl" alt="User Image" class="img-circle user-image" />
+                                        </td>
+                                        <td>@user.FirstName</td>
+                                        <td>@user.LastName</td>
+                                        <td>@user.UserRoleName</td>
+                                        <td class="text-center">
+                                            <a asp-controller="Project" asp-action="DeleteProjectUsers" asp-all-route-data='new Dictionary<string,string> { { "ProjectId", @user.ProjectId}, { "UserId", @user.UserId }, {"RoleId", @user.RoleId }}' class="btn btn-danger" onclick="return confirm('Bạn có muốn xóa người dùng này khỏi dự án không?');"> Rời khỏi dự án </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <form asp-controller="Project" asp-action="AddUser" method="post">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <input id="ProjectId" name="ProjectId" value="@Model.Id" type="hidden" />
+                            <div class="row">
+                                <div class="col">
+                                    <select id="userId" name="userId" class="form-control">
+                                        <option>Người dùng</option>
+                                        @foreach (var user in Model.Users)
+                                        {
+                                            <option value="@user.Id">@user.FirstName @user.LastName</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <select id="roleId" name="roleId" class="form-control">
+                                        <option>Quyền</option>
+                                        @foreach (var role in Model.Roles)
+                                        {
+                                            <option value="@role.Id">@role.RoleName</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary btn-block">Thêm vào dự án</button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
